@@ -2,5 +2,10 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/home/sgearou/Downloads/lettuce-core-5.1.2.RELEASE-bin/lettuce-core-5.1.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/sgearou/Downloads/netty-all-4.1.5.Final.jar"/>
+	<classpathentry kind="lib" path="/home/sgearou/Downloads/reactor-core-3.2.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/sgearou/Downloads/rxjava-1.0.2.jar"/>
+	<classpathentry kind="lib" path="/home/sgearou/Downloads/reactive-streams-1.0.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

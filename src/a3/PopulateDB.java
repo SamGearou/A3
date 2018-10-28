@@ -32,18 +32,28 @@ public class PopulateDB {
 			redis.updateEntries(grams.getNGrams());
 			grams.clearGrams();
 		}
+		System.out.println(redis.getCommands().dbsize());
 		Scanner scan = new Scanner(System.in);
-		System.out.println("Please type in a password:");
+		System.out.println("Please type in a password (type in 'quit' to stop):");
 		String input;
 		//determine if the password is weak or strong
 		while((input  = scan.nextLine()) != null && !input.equals("quit")) {
 			if(input.length() < 5 || redis.getCommands().sismember("wordList", input)) {
 				System.out.println("weak");
 			}
-			else {
-				System.out.println(model.passwordProbability(input));
+			else if(redis.getCommands().sismember("wordList", input.toLowerCase())) {
+				System.out.println("weak");
 			}
-			System.out.println("Please type in a password:");
+			else {
+				double score = model.passwordProbability(input);
+				if(score > 65) {
+					System.out.println("strong");
+				}
+				else {
+					System.out.println("weak");
+				}
+			}
+			System.out.println("Please type in a password (type in 'quit' to stop):");
 		}
 		System.out.println("Program has terminated");
 		redis.getConnection().close();

@@ -9,6 +9,6 @@ public class Alphabet {
 	}
 
 	public static void main(String[] args) {
-		System.out.println("1dfgsdh".substring(0,0));
+		System.out.println("123dfDGFGSgsdh".toLowerCase());
 	}
 }

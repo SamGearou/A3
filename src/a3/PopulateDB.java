@@ -24,9 +24,10 @@ public class PopulateDB {
 		File wordList = new File("words.txt");
 		BufferedReader reader = new BufferedReader(new FileReader(wordList));
 		String word = null;
-		//for each word, generate all of its nGrams,
-		//update the database, and clear the nGrams arraylist for the next iteration 
+		//for each word, add word the redis set, generate all of its nGrams,
+		//update the database, and clear the nGrams ArrayList for the next iteration 
 		while ((word = reader.readLine()) != null) {
+			redis.getCommands().sadd("wordList", word);
 			grams.calculateNGrams(word);
 			redis.updateEntries(grams.getNGrams());
 			grams.clearGrams();
@@ -34,10 +35,17 @@ public class PopulateDB {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Please type in a password:");
 		String input;
-		while((input  = scan.nextLine()) != null) {
-			//determine if the password is weak or strong
-			model.passwordProbability(input);
+		//determine if the password is weak or strong
+		while((input  = scan.nextLine()) != null && !input.equals("quit")) {
+			if(input.length() < 5 || redis.getCommands().sismember("wordList", input)) {
+				System.out.println("weak");
+			}
+			else {
+				System.out.println(model.passwordProbability(input));
+			}
 			System.out.println("Please type in a password:");
 		}
+		System.out.println("Program has terminated");
+		redis.getConnection().close();
 	}
 }

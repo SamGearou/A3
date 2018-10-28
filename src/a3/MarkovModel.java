@@ -23,6 +23,7 @@ public class MarkovModel {
 			String prefix = gram.substring(0, gramSize - 1);
 			probability *= conditionalProbability(c, prefix);
 		}
+		System.out.println("Probability without the log term: " + probability);
 		probability = -(Math.log10(probability) / Math.log10(2));
 		
 		//update the database with the new password

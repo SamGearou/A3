@@ -1,0 +1,10 @@
+How long did you spend on this assignment?
+
+We spent roughly 9 hours on this assignment
+
+Any comments or feedback? Things you found interesting? Things you found challenging? Things you found boring?
+
+This assignment was challenging because it was hard to come up with password strength algorithms that returned 'weak' for passwords
+that were slight modifications of known weak passwords. For example, the password 'password' is obviously a weak password, however,
+it was difficult to return 'weak' for passwords like 'Password' or 'password1'.  This assignment was much more manageable in terms of 
+time commitment, compared to previous assignments.   

@@ -6,6 +6,9 @@ import io.lettuce.core.RedisClient;
 import io.lettuce.core.RedisURI;
 import io.lettuce.core.api.StatefulRedisConnection;
 import io.lettuce.core.api.sync.RedisCommands;
+//Sam Gearou, Josh Gearou
+//October 29, 2018
+//This class updates the Redis database with n-grams (see the README for an explanation of an n-gram)
 
 public class RedisClientDB {
 	private RedisClient client;
@@ -45,14 +48,5 @@ public class RedisClientDB {
 	
 	public RedisCommands<String, String> getCommands(){
 		return commands;
-	}
-	
-	public static void main(String[] args) {
-		RedisClientDB redis = new RedisClientDB("localhost", 6379);
-		NGrams grams = new NGrams(5);
-		grams.calculateNGrams("password");
-		redis.updateEntries(grams.getNGrams());
-		redis.updateEntries(grams.getNGrams());
-		System.out.println(redis.commands.get("swor"));
 	}
 }

@@ -5,21 +5,16 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
+//Sam Gearou, Josh Gearou
+//October 29, 2018
+//This class prompt the user for a password, and returns to the user either 'weak' (for a weak password) or
+//'strong' (for a strong password)
 
 public class PopulateDB {
-
-	private NGrams grams;
-	private RedisClientDB redis;
-
-	public PopulateDB(NGrams grams, RedisClientDB redis) {
-		this.grams = grams;
-		this.redis = redis;
-	}
 
 	public static void main(String[] args) throws IOException {
 		NGrams grams = new NGrams(5);
 		RedisClientDB redis = new RedisClientDB("localhost", 6379);
-		PopulateDB populate = new PopulateDB(grams, redis);
 		MarkovModel model = new MarkovModel(grams, redis);
 		File wordList = new File("words.txt");
 		BufferedReader reader = new BufferedReader(new FileReader(wordList));
@@ -32,10 +27,10 @@ public class PopulateDB {
 			redis.updateEntries(grams.getNGrams());
 			grams.clearGrams();
 		}
-		System.out.println(redis.getCommands().dbsize());
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Please type in a password (type in 'quit' to stop):");
 		String input;
+		
 		//determine if the password is weak or strong
 		while((input  = scan.nextLine()) != null && !input.equals("quit")) {
 			if(input.length() < 5 || redis.getCommands().sismember("wordList", input)) {
@@ -57,5 +52,7 @@ public class PopulateDB {
 		}
 		System.out.println("Program has terminated");
 		redis.getConnection().close();
+		reader.close();
+		scan.close();
 	}
 }

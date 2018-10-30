@@ -1,6 +1,13 @@
 package a3;
 
 import java.util.ArrayList;
+//Sam Gearou, Josh Gearou
+//October 29, 2018
+//This class calculates the probability of a password using a Markov Model.  The probability of a password
+//is analogous to the 'strength' of the password, where a smaller probability is a stronger password
+
+//The code in this class is motivated by the paper 'Adaptive Password-Strength Meters from Markov Models'
+//The pdf can be found here: https://pdfs.semanticscholar.org/240b/ead78a1564b047b0bbdfb755ddc9808321d8.pdf
 
 public class MarkovModel {
 	private NGrams grams;

@@ -1,4 +1,8 @@
 package a3;
+//Sam Gearou, Josh Gearou
+//October 29, 2018
+//This class stores an alphabet of valid characters. Passwords can only contain characters in the 
+//ALPHABET variable
 
 public class Alphabet {
 	private static final String ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -6,9 +10,5 @@ public class Alphabet {
 	
 	public static String getAlphabet() {
 		return ALPHABET;
-	}
-
-	public static void main(String[] args) {
-		System.out.println("123dfDGFGSgsdh".toLowerCase());
 	}
 }

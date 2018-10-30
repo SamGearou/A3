@@ -1,6 +1,12 @@
 package a3;
 
 import java.util.ArrayList;
+//Sam Gearou, Josh Gearou
+//October 29, 2018
+//This class calculates the n-grams of a given String (see the README for an explanation of an n-gram)
+
+//The code in this class is motivated by the paper 'Adaptive Password-Strength Meters from Markov Models'
+//The pdf can be found here: https://pdfs.semanticscholar.org/240b/ead78a1564b047b0bbdfb755ddc9808321d8.pdf
 
 public class NGrams {
 	private ArrayList<String> ngrams;
@@ -28,9 +34,5 @@ public class NGrams {
 	
 	public ArrayList<String> getNGrams(){
 		return ngrams;
-	}
-	
-	public static void main(String[] args) {
-		
 	}
 }

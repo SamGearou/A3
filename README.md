@@ -1,9 +1,9 @@
 Steps to run our 'classify.jar' file (on a mac running OS X 10.13 (High Sierra)):
 1. If Redis is not installed on the mac machine, install Redis by going to the following URL: https://redis.io/ and then under the 'Download it' section, there is a link to download Redis.
 2. Once Redis is downloaded, extract the tar or zip files to a location of your choice
-3. Once Redis is installed, you need to run the server executable.  The directory of the executable is in redis-5.0.0 (or whatever you named your directory when you extracted the files from step 2), and within the src directory is the 'redis-server' executable.  Double click on the executable to run the server.
+3. Once Redis is installed, you need to run the server executable with the 'redis.conf' file as an argument.  The directory of the executable is in redis-5.0.0 (or whatever you named your directory when you extracted the files from step 2), and within the src directory is the 'redis-server' executable. From the redis-5.0.0 directory, run the following command: src/redis-server redis.conf. The argument 'redis.conf' makes sure that redis logging is piped to a file and not standard output.
 4. Once the server is running, you can run our 'classify.jar' on the command prompt with the command 'java -jar classify.jar' 
-5. It will take around six minutes for the database to be populated with our word list. After this completes, a message saying 'Please type in a password (type in 'quit' to stop):' should appear on the command line, and this is when you can type in a password.  
+5. It will take around six minutes for the database to be populated with our word list. After this completes, you can type in a password.  
 6.  The program continues to prompt you for passwords, until you type in 'quit', at which point, the program terminates
 
 

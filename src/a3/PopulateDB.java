@@ -12,7 +12,8 @@ import java.util.Scanner;
 
 public class PopulateDB {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
+		try {
 		NGrams grams = new NGrams(5);
 		RedisClientDB redis = new RedisClientDB("localhost", 6379);
 		MarkovModel model = new MarkovModel(grams, redis);
@@ -28,7 +29,6 @@ public class PopulateDB {
 			grams.clearGrams();
 		}
 		Scanner scan = new Scanner(System.in);
-		System.out.println("Please type in a password (type in 'quit' to stop):");
 		String input;
 		
 		//determine if the password is weak or strong
@@ -48,11 +48,13 @@ public class PopulateDB {
 					System.out.println("weak");
 				}
 			}
-			System.out.println("Please type in a password (type in 'quit' to stop):");
 		}
-		System.out.println("Program has terminated");
 		redis.getConnection().close();
 		reader.close();
 		scan.close();
+	}
+		catch(Exception e) {
+			//do nothing
+		}
 	}
 }
